@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{% static 'demo/style.css' %}">
+  <title>Dynamic Django</title>
+  <!-- <link rel="stylesheet" href='{% static "demo/style.css" %}'> -->
+
+</head>
+
+<body>
+  <h1>Hello {{ name }}</h1>
+  <p>You have {{ notifications }} unread notifications.</p>
+
+  <h2>Messages:</h2>
+  <ul>
+    {% for msg in messages %}
+    {% if msg.type == 'warning' %}
+    <li style="color: rgb(0, 0, 0);"><strong>⚠️ {{ msg.type|title }}:</strong> {{ msg.text }}</li>
+    {% else %}
+    <li><strong>{{ msg.type|title }}:</strong> {{ msg.text }}</li>
+    {% endif %}
+
+    <!-- <li><strong>{{ msg.type|title }}: </strong> {{ msg.text }}</li> -->
+    {% endfor %}
+  </ul>
+</body>
+
+</html>
