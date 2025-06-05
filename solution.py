@@ -4,7 +4,11 @@ s = input("Enter a string: ")
 def is_palindrome(s):
     fchars = ''.join(c.lower() for c in s if c.isalnum())
     print(fchars)
-    return fchars == fchars[::-1]
+    
+    for i in range(len(fchars) //2):
+        if fchars[i]!= fchars[len(fchars) - i -1]:
+            return False
+    return True
 
 result = is_palindrome(s)
 
